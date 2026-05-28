@@ -1,7 +1,9 @@
 import os
 import json
 import urllib.request
+import dotenv
 
+dotenv.load_dotenv()
 
 def call_with_sdk():
     try:
@@ -9,10 +11,14 @@ def call_with_sdk():
     except ImportError:
         print("Install the SDK: pip install anthropic")
         return
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        print("Set ANTHROPIC_API_KEY environment variable first")
+        return
 
-    client = anthropic.Anthropic()
+    client = anthropic.Anthropic(api_key=api_key)
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-opus-4-7",
         max_tokens=256,
         messages=[{"role": "user", "content": "What is a neural network in one sentence?"}]
     )
@@ -33,7 +39,7 @@ def call_raw_http():
         "anthropic-version": "2023-06-01",
     }
     body = json.dumps({
-        "model": "claude-sonnet-4-20250514",
+        "model": "claude-opus-4-7",
         "max_tokens": 256,
         "messages": [{"role": "user", "content": "What is a neural network in one sentence?"}],
     }).encode()
