@@ -168,11 +168,7 @@ if __name__ == "__main__":
 
     print("\n--- 3. Convert formats ---")
     small_ds = ds.select(range(500))
-    paths = convert_format(
-        small_ds,
-        "/tmp/data_utils_demo",
-        "cornell-movie-review-data/rotten_tomatoes_sample",
-    )
+    paths = convert_format(small_ds, "/tmp/data_utils_demo", "cornell-movie-review-data/rotten_tomatoes_sample")
 
     print("\n--- 4. Create train/val/test splits ---")
     splits = make_splits(small_ds, train_ratio=0.8, val_ratio=0.1, seed=42)

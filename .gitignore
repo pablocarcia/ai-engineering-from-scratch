@@ -43,6 +43,7 @@ Thumbs.db
 
 data/
 models/
+datasets/
 checkpoints/
 wandb/
 mlruns/
@@ -59,3 +60,11 @@ mlruns/
 catalog.json
 .env
 .env.save
+
+*.bin
+*.safetensors
+*.pt
+*.onnx
+data/*.parquet
+data/*.csv
+models/

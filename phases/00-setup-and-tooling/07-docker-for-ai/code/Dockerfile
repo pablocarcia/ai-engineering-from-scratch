@@ -28,7 +28,16 @@ RUN python -m pip install --no-cache-dir \
     accelerate \
     safetensors \
     flask \
-    requests
+    requests \
+    huggingface_hub \
+    nano \
+    build-essential \
+    curl \
+    wget \
+    tmux \
+    htop \
+    unzip \
+    python3-venv
 
 VOLUME ["/workspace", "/models"]
 
